@@ -7,11 +7,13 @@
 @media (prefers-color-scheme: black) {
 
 }
+.container {
+  @apply mx-auto;
+}
 
 
-
-@layer utilities {
+/* @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */

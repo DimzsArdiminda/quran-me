@@ -1,9 +1,11 @@
-import Image from "next/image";
+import React from 'react'
+import Home from './component/Home'
 
-export default function Home() {
+
+export default function page() {
   return (
-    <main className="grid text-center mt-10">
-      <h4 style={{ fontSize:"2rem" }} className=" box-decoration-clone">Quran Indonesia</h4>
-    </main>
-  );
+    <div>
+      <Home />
+    </div>
+  )
 }
