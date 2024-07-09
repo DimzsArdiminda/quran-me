@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -51,6 +49,7 @@ export default function RootLayout({
 
   function footer() {
     return (
+      <>
       <footer className="bg-white dark:bg-gray-800 p-6">
         <div className="text-start">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Developer</h3>
@@ -66,13 +65,17 @@ export default function RootLayout({
             © {new Date().getFullYear()} All rights reserved.
           </div>
           <div className="flex justify-center mt-5 space-x-5">
-            <p>Contact Me:</p>
+            <p>If you get a bug contact us in:</p>
             <Link href="https://www.instagram.com/penggalan.reformasi_/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
-              Instagram
+              @penggalan.reformasi_
+            </Link>
+            <Link href="https://www.instagram.com/ahmadammrm/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+              @ahmadammrm
             </Link>
           </div>
         </div>
       </footer>
+      </>
     );
   }
 }
