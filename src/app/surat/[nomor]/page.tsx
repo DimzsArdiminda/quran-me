@@ -45,11 +45,11 @@ export default async function SurahDetailPage({ params }: SurahDetailPageProps) 
       <h1 className="text-2xl font-bold">{surah.nama_latin} ({surah.nama})</h1>
       <p className='mb-5'>{surah.deskripsi}</p>
       <div>
-        <p className="text-gray-700">Jumlah Ayat: {surah.jumlah_ayat}</p>
+        <p className="text-white">Jumlah Ayat: {surah.jumlah_ayat}</p>
         
+        <p className="text-white">Audio : </p>
         <audio controls>
           <source src={surah.audio} type="audio/mpeg" />
-          Your browser does not support the audio element.
         </audio>
       </div>
     </div>
