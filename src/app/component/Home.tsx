@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import DetailSurah from './DetailSurah';
 import Link from 'next/link';
 
 type Surah = {
@@ -37,20 +36,19 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         const data = await getSurah();
         setSurah(data);
       } catch (error: any) {
         setError(error.message);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
   return (
-    <>
     <main className="mt-10">
       <h4 style={{ fontSize: '2rem' }} className="text-center box-decoration-clone">
         Quran Indonesia
@@ -71,25 +69,15 @@ export default function Home() {
             <div className="col-span-1 md:col-span-3 text-red-500">{error}</div>
           ) : (
             surah.map((surat) => (
-              // <DetailSurah surat={surat}/>
               <div key={surat.nomor} className="card bordered shadow-lg">
                 <div className="card-body">
-                  <Link href='detail-surat/'>
+                  <Link href={`/surat/${surat.nomor}`}>
                     <h2 className="card-title">{surat.nama_latin} ({surat.nama})</h2>
                     <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: surat.deskripsi }}></p>
                     <p className="text-gray-700">Jumlah Ayat: {surat.jumlah_ayat}</p>
                     <p className="text-gray-700">Tempat Turun: {surat.tempat_turun}</p>
                     <p className="text-gray-700">Arti: {surat.arti}</p>
-                    </Link>
-                    <div>
-                    {/* <div className="container">
-                      <h3 className="card-title">Audio</h3>
-                      <audio controls>
-                      <source src={surat.audio} type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                      </audio>
-                      </div> */}
-                  </div>
+                  </Link>
                 </div>
               </div>
             ))
@@ -97,6 +85,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-    </>
   );
 }
