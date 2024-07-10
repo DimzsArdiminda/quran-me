@@ -52,53 +52,49 @@ export default function Home() {
     fetchData();
   }, []);
 
+  if (isLoading) {
+    return null; 
+  }
+
   return (
-    <>
-      {isLoading ? (
-        <div className="flex justify-center items-center h-screen">
-          <button type="button" className="btn loading">Loading...</button>
-        </div>
-      ) : (
-        <main className="mt-10">
-          <h4 style={{ fontSize: '2rem' }} className="text-center box-decoration-clone">
-            QuranME Indonesia
-          </h4>
+    <main className="mt-10">
+      <h4 style={{ fontSize: '2rem' }} className="text-center box-decoration-clone">
+        QuranME Indonesia
+      </h4>
 
-          <div className="container mx-auto mt-6">
-            <div className="card bordered shadow-lg mb-6">
-              <div className="card-body">
-                <h2 className="card-title">Quran</h2>
-                <p className="text-gray-700">
-                  Al-Qur'an adalah kitab suci umat Islam yang di dalamnya terdapat ajaran-ajaran yang harus diikuti oleh umat Islam.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 py-6 px-1 md:grid-cols-3 gap-4">
-              {error ? (
-                <div className="col-span-1 md:col-span-3 text-red-500">{error}</div>
-              ) : (
-                surah.map((surat) => (
-                  <Link href={`/surat/${surat.nomor}`} key={surat.nomor}>
-                    <Card className='hover: shadow-lg transition-all duration-500'>
-                      <CardHeader>
-                        <CardTitle>{surat.nama_latin}</CardTitle>
-                        <CardDescription className='text-lg font-bold'>{surat.nama}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className='italic'>{surat.arti}</p>
-                      </CardContent>
-                      <CardFooter>
-                        <p className='font-xl font-bold'>Surah ke {surat.nomor}</p>
-                      </CardFooter>
-                    </Card>
-                  </Link>
-                ))
-              )}
-            </div>
+      <div className="container mx-auto mt-6">
+        <div className="card bordered shadow-lg mb-6">
+          <div className="card-body">
+            <h2 className="card-title">Quran</h2>
+            <p className="text-gray-700">
+              Al-Qur'an adalah kitab suci umat Islam yang di dalamnya terdapat ajaran-ajaran yang harus diikuti oleh umat Islam.
+            </p>
           </div>
-        </main>
-      )}
-    </>
+        </div>
+
+        <div className="grid grid-cols-1 py-6 px-1 md:grid-cols-3 gap-4">
+          {error ? (
+            <div className="col-span-1 md:col-span-3 text-red-500">{error}</div>
+          ) : (
+            surah.map((surat) => (
+              <Link href={`/surat/${surat.nomor}`} key={surat.nomor}>
+                <Card className='hover: shadow-lg transition-all duration-500'>
+                  <CardHeader>
+                    <CardTitle>{surat.nama_latin}</CardTitle>
+                    <CardDescription className='text-lg font-bold'>{surat.nama}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className='italic'>{surat.arti}</p>
+                  </CardContent>
+                  <CardFooter>
+                    <p className='font-xl font-bold'>Surah ke {surat.nomor}</p>
+                  </CardFooter>
+                </Card>
+              </Link>
+            ))
+          )}
+        </div>
+      </div>
+    </main>
   );
 }
