@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 type Surah = {
   nomor: number;
@@ -78,19 +79,20 @@ export default function Home() {
                 <div className="col-span-1 md:col-span-3 text-red-500">{error}</div>
               ) : (
                 surah.map((surat) => (
-                  <div className=" px-10">
-                    <div key={surat.nomor} className="card bordered shadow-lg">
-                    <div className="card-body">
-                      <Link href={`/surat/${surat.nomor}`}>
-                          <h2 className="card-title">{surat.nama_latin} ({surat.nama})</h2>
-                          <p className="text-gray-700">Nomor urut surat: {surat.nomor}</p>
-                          <p className="text-gray-700">Jumlah Ayat: {surat.jumlah_ayat}</p>
-                          <p className="text-gray-700">Tempat Turun: {surat.tempat_turun}</p>
-                          <p className="text-gray-700">Arti: {surat.arti}</p>
-                      </Link>
-                    </div>
-                  </div>
-                  </div>
+                  <Link href={`/surat/${surat.nomor}`} key={surat.nomor}>
+                    <Card className='hover: shadow-lg transition-all duration-500'>
+                      <CardHeader>
+                        <CardTitle>{surat.nama_latin}</CardTitle>
+                        <CardDescription className='text-lg font-bold'>{surat.nama}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className='italic'>{surat.arti}</p>
+                      </CardContent>
+                      <CardFooter>
+                        <p className='font-xl font-bold'>Surah ke {surat.nomor}</p>
+                      </CardFooter>
+                    </Card>
+                  </Link>
                 ))
               )}
             </div>

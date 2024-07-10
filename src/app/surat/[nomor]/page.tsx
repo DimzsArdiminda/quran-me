@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 type Ayah = {
   id: string;
@@ -56,7 +57,9 @@ export default async function SurahDetailPage({ params }: SurahDetailPageProps) 
   return (
     <>
       <div className="container mx-auto mt-7">
-      <Link href='/' className='btn btn-info ms-6'><p>Kembali ke menu utama</p></Link>
+      <Link href='/'>
+        <Button className="mb-5">Kembali ke menu utama</Button>
+      </Link>
         <div className="card">
           <div className="card-body bordered shadow-lg mb-6" style={{ textAlign:'justify', marginBottom:'5rem' }}>
             <h1 className="text-2xl font-bold">{surah.nama_latin} ({surah.nama})</h1>
@@ -75,33 +78,19 @@ export default async function SurahDetailPage({ params }: SurahDetailPageProps) 
       
         <h3 className="text-2xl font-semibold mb-4">{surah.nama_latin} ({surah.nama})</h3>
         <div className="space-y-6">
+          {/* Show Ayat */}
             {surah.ayat.map((ayah) => (
                 <div key={ayah.id} className="p-4 border rounded-lg shadow-sm">
                     <div className="flex justify-between items-center mb-2">
-                        <h5 className="text-lg font-medium">{ayah.nomor}</h5>
-                        <p className="text-xl text-right ">{ayah.ar}</p>
+                        <h5 className="text-base font-medium pr-5 rounded-lg border-gray-100">{ayah.nomor}</h5>
+                        <p className="text-xl text-right">{ayah.ar}</p>
                     </div>
-                    <div dangerouslySetInnerHTML={{ __html: ayah.tr}}></div>
-                    <div dangerouslySetInnerHTML={{ __html: ayah.idn}}></div>
+                    <div dangerouslySetInnerHTML={{ __html:  ayah.tr}} className='italic font-bold'></div>
+                    <div>Arti : {ayah.idn}</div>
                 </div>
             ))}
         </div>
     </div>
     </>
   )
-
-  // return (
-  //   <div className="container mx-auto mt-6">
-  //     <h1 className="text-2xl font-bold">{surah.nama_latin} ({surah.nama})</h1>
-  //     <p className='mb-5'>{surah.deskripsi}</p>
-  //     <div>
-  //       <p className="text-white">Jumlah Ayat: {surah.jumlah_ayat}</p>
-        
-  //       <p className="text-white">Audio : </p>
-  //       <audio controls>
-  //         <source src={surah.audio} type="audio/mpeg" />
-  //       </audio>
-  //     </div>
-  //   </div>
-  // );
 }
