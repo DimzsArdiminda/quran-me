@@ -42,7 +42,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-        <ModeToggle/>
+          <div className="p-5 flex justify-end">
+            <ModeToggle/>
+          </div>
         {children}
         </ThemeProvider>
       </body>
