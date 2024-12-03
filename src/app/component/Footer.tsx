@@ -19,13 +19,13 @@ function Footer() {
             © {new Date().getFullYear()} All rights reserved.
           </div>
           <div className="flex justify-center mt-5 space-x-5">
-            <p>If you get a bug contact us in:</p>
+            {/* <p>If you get a bug contact us in:</p>
             <Link href="https://www.instagram.com/penggalan.reformasi_/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400" target="blank">
               @penggalan.reformasi_
             </Link>
             <Link href="https://www.instagram.com/ahmadammrm/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400" target="blank">
               @ahmadammrm
-            </Link>
+            </Link> */}
           </div>
         </div>
       </footer>
